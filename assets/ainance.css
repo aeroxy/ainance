@@ -81,8 +81,7 @@ a {
   text-underline-offset: 2px;
 }
 
-a:focus-visible,
-summary:focus-visible {
+a:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 2px;
   border-radius: 4px;
@@ -123,7 +122,7 @@ h3 {
 
 .note {
   font-size: 0.85rem;
-  margin: 10px 0 0;
+  margin: 0;
 }
 
 .sr-only {
@@ -170,20 +169,9 @@ h3 {
   background: linear-gradient(135deg, var(--up) 50%, var(--down) 50%);
 }
 
-.tagline {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
 .masthead nav {
   margin-left: auto;
   font-size: 0.9rem;
-}
-
-@media (max-width: 560px) {
-  .tagline {
-    display: none;
-  }
 }
 
 /* The day in brief */
@@ -207,6 +195,10 @@ section {
   font-size: clamp(1.7rem, 1.1rem + 2.4vw, 2.6rem);
   letter-spacing: -0.015em;
   max-width: 28ch;
+}
+
+.hero h1 + .dateline {
+  margin-top: 10px;
 }
 
 .summary {
@@ -260,23 +252,24 @@ section {
 .board-group,
 .call,
 .tile,
-.table-wrap,
-.notebook {
+.table-wrap {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
-/* Markets board */
+/* Markets board: up to three columns of panels, balanced by height (the
+   sector panel is twice as long as the rest). 280px is the narrowest a
+   panel gets, which keeps a label, a price and a change on one line. */
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  align-items: start;
-  gap: 12px;
+  columns: 3 280px;
+  column-gap: 12px;
 }
 
 .board-group {
+  break-inside: avoid;
+  margin-bottom: 12px;
   padding: 12px 14px 8px;
 }
 
@@ -314,7 +307,7 @@ section {
 }
 
 .board-group td {
-  padding: 5px 0 5px 10px;
+  padding: 5px 0 5px 8px;
 }
 
 /* Calls */
@@ -533,15 +526,13 @@ fb-change.flat {
   margin: 0 0 10px;
 }
 
-.watch,
-.changes {
+.watch {
   max-width: 76ch;
   padding-left: 20px;
   margin: 0;
 }
 
-.watch li,
-.changes li {
+.watch li {
   margin: 6px 0;
 }
 
@@ -646,45 +637,20 @@ fb-change.flat {
   color: var(--down);
 }
 
-/* Notebook */
-
-.notebook {
-  margin-top: 16px;
-  padding: 12px 16px;
-  max-width: 76ch;
-}
-
-.notebook summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.notebook h3 {
-  font-size: 1rem;
-  margin: 16px 0 4px;
-}
-
-.notebook ul {
-  padding-left: 20px;
-  margin: 4px 0;
-}
-
-.notebook p {
-  margin: 6px 0;
-}
-
-/* Archive */
+/* Archive: the date in a column of its own, never wrapped; stacked above
+   the headline on a phone. */
 
 .archive-list {
   list-style: none;
   padding: 0;
   margin: 24px 0 0;
-  max-width: 76ch;
+  max-width: 80ch;
 }
 
 .archive-list a {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 9.5em 1fr;
+  gap: 4px 16px;
   padding: 12px 0;
   border-top: 1px solid var(--hairline);
   color: var(--ink);
@@ -696,9 +662,19 @@ fb-change.flat {
 }
 
 .archive-list time {
-  flex: 0 0 120px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .archive-list a {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-list time {
+    font-size: 0.85rem;
+  }
 }
 
 /* Footer */
