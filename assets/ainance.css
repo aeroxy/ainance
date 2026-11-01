@@ -152,6 +152,9 @@ h3 {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--ink);
   font-weight: 800;
   font-size: 1.15rem;
@@ -159,14 +162,10 @@ h3 {
   text-decoration: none;
 }
 
-.brand::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 8px;
-  border-radius: 2px;
-  background: linear-gradient(135deg, var(--up) 50%, var(--down) 50%);
+.brand .mark {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .masthead nav {

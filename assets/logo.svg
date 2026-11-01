@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Ainance: a donut chart, bull over bear, a hairline apart. The PNG icons are rendered from this file by site/render-icons.sh. -->
+  <mask id="hole">
+    <rect width="64" height="64" fill="#fff"/>
+    <circle cx="32" cy="32" r="11.5" fill="#000"/>
+  </mask>
+  <clipPath id="bull"><path d="M0 0H62L0 62Z"/></clipPath>
+  <clipPath id="bear"><path d="M64 2V64H2Z"/></clipPath>
+  <g mask="url(#hole)">
+    <circle cx="32" cy="32" r="30" fill="#0f8a6e" clip-path="url(#bull)"/>
+    <circle cx="32" cy="32" r="30" fill="#db4a12" clip-path="url(#bear)"/>
+  </g>
+</svg>
