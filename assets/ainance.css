@@ -690,3 +690,8 @@ fb-change.flat {
   max-width: 76ch;
   margin: 0 0 8px;
 }
+
+.footer .follow {
+  color: var(--ink);
+  font-weight: 600;
+}
