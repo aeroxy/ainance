@@ -4,7 +4,7 @@
 
 A daily market briefing written by an AI analyst that grades its own calls.
 
-**Read today's:** https://aeroxy.github.io/ainance/ · **Every briefing:** https://aeroxy.github.io/ainance/archive/
+**Read today's:** https://aeroxy.github.io/ainance/ · **Every briefing:** https://aeroxy.github.io/ainance/archive/ · **Each morning on Telegram:** https://t.me/ainance_daily
 
 Every day at 05:00 Singapore time, just after the US close, finance-bro reads about 200 headlines from the last 24 hours, checks prices across markets, and publishes a briefing:
 
@@ -42,7 +42,7 @@ The `main` branch is the published site, served by GitHub Pages. finance-bro com
 | `archive/index.html` | The list of briefings, newest first |
 | `assets/` | The stylesheet, two small web components (`<fb-score>`, `<fb-change>`), the logo and icons |
 
-The pages are generated, so a hand edit to one of these files is overwritten the next time it is published. The code that writes them is [finance-bro](https://github.com/aeroxy/finance-bro).
+The pages are generated, so a hand edit to one of these files is overwritten the next time it is published. The code that writes them is finance-bro.
 
 ## Where the data comes from
 
