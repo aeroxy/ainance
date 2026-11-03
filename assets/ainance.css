@@ -636,6 +636,67 @@ fb-change.flat {
   color: var(--down);
 }
 
+/* On a phone each graded call stacks into a card, its explanation full
+   width under the numbers, instead of a table to scroll sideways. Every
+   cell says what it is, so the header row goes. */
+
+@media (max-width: 560px) {
+  .graded,
+  .graded tbody {
+    display: block;
+  }
+
+  .graded thead {
+    display: none;
+  }
+
+  .graded tr {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas:
+      "call call call result"
+      "score move bench bench"
+      "why why why why";
+    gap: 6px 14px;
+    padding: 14px 12px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .graded tr:first-child {
+    border-top: 0;
+  }
+
+  .graded td {
+    padding: 0;
+    border: 0;
+  }
+
+  .graded td:nth-child(1) {
+    grid-area: call;
+  }
+
+  .graded td:nth-child(2) {
+    grid-area: score;
+  }
+
+  .graded td:nth-child(3) {
+    grid-area: move;
+  }
+
+  .graded td:nth-child(4) {
+    grid-area: bench;
+  }
+
+  .graded td:nth-child(5) {
+    grid-area: result;
+  }
+
+  .graded td.why {
+    grid-area: why;
+    min-width: 0;
+  }
+}
+
 /* Archive: the date in a column of its own, never wrapped; stacked above
    the headline on a phone. */
 
