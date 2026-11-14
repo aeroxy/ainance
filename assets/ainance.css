@@ -72,7 +72,7 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font: 1rem/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   overflow-wrap: break-word;
 }
 
@@ -92,6 +92,7 @@ h2,
 h3 {
   line-height: 1.2;
   margin: 0;
+  text-wrap: balance;
 }
 
 h2 {
@@ -109,7 +110,7 @@ h3 {
   padding: 0 16px;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 45em) {
   .wrap {
     padding: 0 24px;
   }
@@ -258,11 +259,13 @@ section {
 }
 
 /* Markets board: up to three columns of panels, balanced by height (the
-   sector panel is twice as long as the rest). 280px is the narrowest a
-   panel gets, which keeps a label, a price and a change on one line. */
+   sector panel is twice as long as the rest). 17.5rem (280px at the default
+   text size) is the narrowest a panel gets, which keeps a label, a price and
+   a change on one line; at a larger text size the label wraps instead of the
+   panel overflowing. */
 
 .board {
-  columns: 3 280px;
+  columns: 3 17.5rem;
   column-gap: 12px;
 }
 
@@ -296,7 +299,6 @@ section {
   font-weight: 500;
   color: var(--ink-2);
   padding: 5px 0;
-  white-space: nowrap;
 }
 
 .num {
@@ -322,7 +324,7 @@ section {
   gap: 32px;
 }
 
-@media (min-width: 920px) {
+@media (min-width: 57.5em) {
   .calls {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
@@ -376,7 +378,9 @@ section {
   min-width: 0;
 }
 
+/* A heading on pages from 2026-11-14, a span before; both look the same. */
 .ticker .sym {
+  margin: 0;
   font-size: 1.15rem;
   font-weight: 750;
   letter-spacing: -0.01em;
@@ -525,6 +529,12 @@ fb-change.flat {
   margin: 0 0 10px;
 }
 
+.thesis,
+.story p,
+.summary li {
+  text-wrap: pretty;
+}
+
 .watch {
   max-width: 76ch;
   padding-left: 20px;
@@ -569,6 +579,7 @@ fb-change.flat {
 
 .table-wrap {
   overflow-x: auto;
+  container-type: inline-size;
 }
 
 .graded {
@@ -636,11 +647,12 @@ fb-change.flat {
   color: var(--down);
 }
 
-/* On a phone each graded call stacks into a card, its explanation full
-   width under the numbers, instead of a table to scroll sideways. Every
-   cell says what it is, so the header row goes. */
+/* Wherever the six columns don't fit (a phone, a phone on its side, large
+   text), each graded call stacks into a card, its explanation full width
+   under the numbers, instead of a table to scroll sideways. The header row
+   goes, so each number carries its own label. */
 
-@media (max-width: 560px) {
+@container (width < 50rem) {
   .graded,
   .graded tbody {
     display: block;
@@ -695,6 +707,29 @@ fb-change.flat {
     grid-area: why;
     min-width: 0;
   }
+
+  .graded td:nth-child(2)::before,
+  .graded td:nth-child(3)::before,
+  .graded td:nth-child(4)::before {
+    display: block;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .graded td:nth-child(2)::before {
+    content: "Score";
+  }
+
+  .graded td:nth-child(3)::before {
+    content: "Move";
+  }
+
+  .graded td:nth-child(4)::before {
+    content: "Its market";
+  }
 }
 
 /* Archive: the date in a column of its own, never wrapped; stacked above
@@ -727,7 +762,7 @@ fb-change.flat {
   white-space: nowrap;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 35em) {
   .archive-list a {
     grid-template-columns: 1fr;
   }
