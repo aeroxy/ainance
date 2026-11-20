@@ -454,6 +454,12 @@ section {
   margin-right: 4px;
 }
 
+/* A source with no address (a Binance table, a calculation): named, not linked. */
+.src .plain {
+  font-weight: inherit;
+  margin-right: 0;
+}
+
 /* <fb-score>: nine segments, the label in ink beside them */
 
 fb-score {
